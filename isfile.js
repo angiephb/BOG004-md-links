@@ -9,14 +9,15 @@ const isFile = (route, options) => {
       if (err) {
         console.log('ERROR', err)
         reject('AQUI HAY UN ERROR', err);
-      } else if(stats.isFile()) {
+      } else {
+        if(stats.isFile()) {
           resolve(route)
         }else{
           isDirectory(route)
         }
         /* console.log('Esto es un archivo', stats.isFile());
         resolve(route) */
-      
+      }
     });
   }); 
 };
