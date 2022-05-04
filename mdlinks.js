@@ -10,8 +10,10 @@ const mdLinks = (path, options) => {
         if (fs.existsSync(absoluteRoute) === false) {
             reject(new Error('La ruta ingresada es invalida'));
         }else{
-            Promise.all(md.getLinks(absoluteRoute)).then((res) => {
-                console.log(res);
+            Promise.resolve(md.getLinks(absoluteRoute))
+            .then((res) => {
+                console.log('si funciona',res);
+                return res
             })
         }
     });

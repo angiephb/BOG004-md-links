@@ -1,4 +1,4 @@
-const {getLinks} = require('./isfile.js');
+/* const {getLinks} = require('./isfile.js');
 const fetch = require('node-fetch')
 
 
@@ -21,4 +21,4 @@ const validarLinks = (route) => {
 module.exports = {
     validarLinks,
 }
- 
+  */
