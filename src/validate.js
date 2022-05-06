@@ -1,17 +1,46 @@
 const md = require('./isfile.js');
-const fetch = require('node-fetch')
+//Se importa Fetch para realizar la petición HTTP
+const { default: fetch } = require("node-fetch");
+
 
 const validate = (path) => {
-  const arrLink = Promise.resolve(md.getLinks(path))
-    .then((res) => {
-      return [...res]
-    })
-  console.log('arr', arrLink);
-
-
+  return md.getLinks(path).then(res => {
+    const array = res.map((link) => fetch(link.href)
+      .then((response) => ({
+        href: link.href,
+        text: link.text,
+        file: link.path,
+        status: response.status,
+        ok: response.ok ? 'OK' : 'FAIL'
+      }))
+      .catch(() => ({
+        href: link.href,
+        text: link.text,
+        file: link.path,
+        status: 404,
+        ok: 'FAIL'
+      })));
+    return Promise.all(array);
+  })
 }
 
+const stats = (path) => {
+  return md.getLinks(path).then(res => {
+    const stats = {};
+    const allStats = [];
+    const array = res.map((link) => {
+      allStats.push(link);
+      console.log('all', allStats);
+    });
+    if (res[0].status) {
+      stats.Total = allStats.length;
+      stats.Unique = unique(allStats);
+    }
+    return Promise.all(array);
+  })
+}
 
 module.exports = {
   validate,
+  stats
 }

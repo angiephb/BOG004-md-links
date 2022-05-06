@@ -90,7 +90,7 @@ const getLinks = (route) => new Promise((resolve, reject) => {
     const arrFiles = getMdFiles(route)
     //   console.log('arrFiles: ', arrFiles);
     let arrObj = [];
-    arrFiles.forEach((mdPath) => {
+    Promise.all(arrFiles.map(mdPath =>
         readFiles(mdPath)
             .then((data) => {
                 let links = data.match(regLink)
@@ -100,17 +100,18 @@ const getLinks = (route) => new Promise((resolve, reject) => {
                     let matchText = link.match(regText)[1]
                     arrObj.push({
                         href: matchUrl,
-                        text: matchText,
+                        text: matchText.substring(0, 50),
                         path: mdPath,
                     })
                 })
                 //   console.log('******objeto: ', [...arrObj]);
-                resolve([...arrObj])
-               return [...arrObj]
+                return [...arrObj]
             })
             .catch(() => reject('Error en los Links'))
-    });
-
+    )).then(() => {
+        // console.log('reponse', (arrObj));
+        resolve(arrObj)
+    })
 })
 
 

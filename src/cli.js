@@ -1,4 +1,6 @@
-const mdLinks = require('./mdlinks.js');
+#!/usr/bin/env node
+const md = require('./mdlinks.js');
+const path = process.argv[2];
 
 let options = {
     validate: false,
@@ -6,14 +8,19 @@ let options = {
 };
 
 /* esta Funcion nos ayudara a dar opciones al objeto options */
-let inputOpt = () =>{
-    if (process.argv.includes('--validate')){
+let inputOpt = new Promise((resolve, reject) => {
+    if (process.argv.includes('--validate')) {
         options.validate = true;
-    } if (process.argv.includes('--stats')){
+    } if (process.argv.includes('--stats')) {
         options.stats = true;
     }
-    return options
-}
+    resolve()
+})
+
+inputOpt.then(()=> {
+    md.mdLinks(path, options)
+})
+
 
 module.exports = {
     inputOpt,

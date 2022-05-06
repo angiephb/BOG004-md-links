@@ -8,12 +8,14 @@
     "marked": "^4.0.14",
     "node-fetch": "^2.6.7"
   },
+  "bin": {
+    "md-links": "src/cli.js"
+  },
   "description": "Librería que analiza archivos .md y permite la validación del status de cada link ",
-  "main": "index.js",
+  "main": "cli.js",
   "directories": {
     "test": "test"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
