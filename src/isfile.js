@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-// let marked = require('marked')
-// const fetch = require('node-fetch')
+const fetch = require('node-fetch')
 
 /* Esta funcion esta analizando la ruta y conviertiendola en absoluta */
 const readRoute = (routes) => {
@@ -91,7 +90,6 @@ const getLinks = (route) => new Promise((resolve, reject) => {
     const arrFiles = getMdFiles(route)
     //   console.log('arrFiles: ', arrFiles);
     let arrObj = [];
-
     arrFiles.forEach((mdPath) => {
         readFiles(mdPath)
             .then((data) => {
@@ -106,12 +104,18 @@ const getLinks = (route) => new Promise((resolve, reject) => {
                         path: mdPath,
                     })
                 })
-                //   console.log('******objeto: ', arrObj);
-                resolve(arrObj)
-                return arrObj 
-            });
+                //   console.log('******objeto: ', [...arrObj]);
+                resolve([...arrObj])
+               return [...arrObj]
+            })
+            .catch(() => reject('Error en los Links'))
     });
+
 })
+
+
+
+
 
 
 
@@ -125,7 +129,7 @@ module.exports = {
     getLinks,
     getMdFiles,
     extMd,
-    // validarLinks
+    // validate
 
 
 }

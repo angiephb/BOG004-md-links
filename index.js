@@ -1,4 +1,4 @@
- const md = require ('./mdlinks.js');
+ const md = require ('./src/mdlinks.js');
 
 /*md.fileOrDirectory(process.argv[2], [])
     .then(result => console.log('respuesta', result))

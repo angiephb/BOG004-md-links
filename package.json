@@ -1,11 +1,33 @@
 {
   "name": "md-links",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "engines": {
     "node": ">=14.x"
   },
   "dependencies": {
     "marked": "^4.0.14",
     "node-fetch": "^2.6.7"
-  }
+  },
+  "description": "Librería que analiza archivos .md y permite la validación del status de cada link ",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angiephb/BOG004-md-links.git"
+  },
+  "keywords": [
+    "node",
+    "npm",
+    "javasript",
+    "md-links"
+  ],
+  "author": "Angie Herrera",
+  "license": "ISC",
+  "homepage": "https://github.com/angiephb/BOG004-md-links#readme"
 }

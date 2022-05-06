@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const md = require('./isfile.js');
-const valid = require('./validate.js')
+const { validate } = require('./validate.js')
+const cli = require('./cli.js')
 
 
 const mdLinks = (path, options) => {
@@ -9,12 +10,13 @@ const mdLinks = (path, options) => {
         const absoluteRoute = md.readRoute(path);
         if (fs.existsSync(absoluteRoute) === false) {
             reject(new Error('La ruta ingresada es invalida'));
-        }else{
+        } else {
+
             Promise.resolve(md.getLinks(absoluteRoute))
-            .then((res) => {
-                console.log('si funciona',res);
-                return res
-            })
+                .then((res) => {
+                    return [res]
+                })
+            console.log('valid', validate(absoluteRoute));
         }
     });
     return promise
