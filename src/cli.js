@@ -1,4 +1,9 @@
 #!/usr/bin/env node
+
+/* La anterior es una instancia de una línea shebang: los primera línea en un archivo ejecutable de texto
+sin formato en Plataformas tipo Unix que le dice al sistema a qué intérprete pasar ese archivo para su
+ejecución, a través de la línea de comando siguiendo la magia #! prefix (llamado el asunto). */
+
 const md = require('./mdlinks.js');
 const path = process.argv[2];
 

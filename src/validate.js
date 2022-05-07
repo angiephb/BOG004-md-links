@@ -26,17 +26,10 @@ const validate = (path) => {
 
 const stats = (path) => {
   return md.getLinks(path).then(res => {
-    const stats = {};
-    const allStats = [];
-    const array = res.map((link) => {
-      allStats.push(link);
-      console.log('all', allStats);
-    });
-    if (res[0].status) {
-      stats.Total = allStats.length;
-      stats.Unique = unique(allStats);
-    }
-    return Promise.all(array);
+    const array = res.map((link => link.json))
+      return ({
+        total: array.length
+      })
   })
 }
 
