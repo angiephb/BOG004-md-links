@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-useless-escape */
 const fs = require('fs');
 const path = require('path');
@@ -7,20 +8,18 @@ const readRoute = (routes) => {
     if (path.isAbsolute(routes)) {
         // console.log('la ruta es absoluta: ', routes);
         return routes;
-    } else {
-        // console.log('ruta convertida en absoluta: ', path.resolve(routes));
-        return path.resolve(routes);
     }
+    // console.log('ruta convertida en absoluta: ', path.resolve(routes));
+    return path.resolve(routes);
     // SI LA RUTA NO ES ABSOLUTA , LA TRANSFORMO, SI NO, RETORNO LA RUTA
 };
 
-/* Esta funcion nos indica un (boleano) si la ruta es un directorio o un archivo*/
+/* Esta funcion nos indica un (boleano) si la ruta es un directorio o un archivo */
 const fileOrDirectory = (route) => {
     fs.stat(route, (error, stats) => {
         if (error) {
             console.log(error);
-        }
-        else {
+        } else {
             if (stats.isFile()) {
                 stats.isFile();
                 // console.log('is file?', stats.isFile());

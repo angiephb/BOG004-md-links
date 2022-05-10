@@ -13,18 +13,16 @@ let options = {
     stats: false
 };
 
-/* esta Funcion nos ayudara a dar opciones al objeto options */
-// const inputOpt = () => {
+/* modificando valores de options */
 if (process.argv.includes('--validate') && process.argv.includes('--stats')) {
     options.validate = true;
     options.stats = true;
+    twOptions(path).then(res => console.log(' Total: ', res.Total, '\n', 'Unique: ', res.Unique, '\n', 'Broken: ', res.Broken));
 } else if (process.argv.includes('--stats')) {
     options.stats = true;
+    stats(path).then(res => console.log(' Total: ', res.Total, '\n', 'Unique: ', res.Unique,));
 } else if (process.argv.includes('--validate')) {
-    options.validate = true;
-    console.log('validate');
-    md.mdLinks(path, { validate: true }).then(res => console.log(res));
+    validate(path).then(res => console.log(res.map((link) => link.file + ' ' + link.href + ' ' + link.ok + ' ' + link.status + ' '+ link.text)));
 } else {
-    md.mdLinks(path,options);
+    md.mdLinks(path, { validate: false }).then(res => console.log(res));
 }
-// }
