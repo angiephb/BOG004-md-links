@@ -3,3 +3,7 @@
 2 . [hola segundo](https://pablomonteserin.com/curso/javascript/ejemplos-api-fetch/)
 
 3. [hola tercero](https://docs.npmjs.com/cli/v7/commandse/npm-test)
+
+2 . [hola segundo](https://pablomonteserin.com/curso/javascriptTY/ejemplos-api-fetch/)
+
+3. [hola tercero](https://docs.npmjs.com/cli/v7/commandse/npm-test)

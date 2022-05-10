@@ -5,6 +5,7 @@ sin formato en Plataformas tipo Unix que le dice al sistema a qué intérprete p
 ejecución, a través de la línea de comando siguiendo la magia #! prefix (llamado el asunto). */
 
 const md = require('./mdlinks.js');
+const { validate, stats, twOptions } = require('./validate.js');
 const path = process.argv[2];
 
 let options = {
@@ -13,20 +14,17 @@ let options = {
 };
 
 /* esta Funcion nos ayudara a dar opciones al objeto options */
-let inputOpt = new Promise((resolve, reject) => {
-    if (process.argv.includes('--validate')) {
-        options.validate = true;
-    } if (process.argv.includes('--stats')) {
-        options.stats = true;
-    }
-    resolve()
-})
-
-inputOpt.then(()=> {
-    md.mdLinks(path, options)
-})
-
-
-module.exports = {
-    inputOpt,
+// const inputOpt = () => {
+if (process.argv.includes('--validate') && process.argv.includes('--stats')) {
+    options.validate = true;
+    options.stats = true;
+} else if (process.argv.includes('--stats')) {
+    options.stats = true;
+} else if (process.argv.includes('--validate')) {
+    options.validate = true;
+    console.log('validate');
+    md.mdLinks(path, { validate: true }).then(res => console.log(res));
+} else {
+    md.mdLinks(path,options);
 }
+// }

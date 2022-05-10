@@ -31,5 +31,8 @@
   ],
   "author": "Angie Herrera",
   "license": "ISC",
-  "homepage": "https://github.com/angiephb/BOG004-md-links#readme"
+  "homepage": "https://github.com/angiephb/BOG004-md-links#readme",
+  "devDependencies": {
+    "eslint": "^8.15.0"
+  }
 }
