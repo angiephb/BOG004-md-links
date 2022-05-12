@@ -22,7 +22,10 @@ if (process.argv.includes('--validate') && process.argv.includes('--stats')) {
     options.stats = true;
     stats(path).then(res => console.log(' Total: ', res.Total, '\n', 'Unique: ', res.Unique,));
 } else if (process.argv.includes('--validate')) {
+    options.validate = true;
     validate(path).then(res => console.log(res.map((link) => link.file + ' ' + link.href + ' ' + link.ok + ' ' + link.status + ' '+ link.text)));
 } else {
-    md.mdLinks(path, { validate: false }).then(res => console.log(res));
+    md.mdLinks(path, { validate: false })
+        .then(res => console.log(res.map((link) => link.path + ' ' + link.href + ' ' + link.text)))
+        .catch(() => console.log(new Error('Debes ingresar una ruta')));
 }

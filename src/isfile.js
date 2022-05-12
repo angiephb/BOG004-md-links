@@ -85,7 +85,6 @@ const getMdFiles = (routeFile) => {
 const getLinks = (route) => new Promise((resolve, reject) => {
     const regLink = (/\[(.*?)\]\((.*?)\)/g);
     const regText = /\[([^\[]+)\](\(.*\))/;
-
     const arrFiles = getMdFiles(route);
     //   console.log('arrFiles: ', arrFiles);
     let arrObj = [];
@@ -94,15 +93,19 @@ const getLinks = (route) => new Promise((resolve, reject) => {
             .then((data) => {
                 let links = data.match(regLink);
                 // console.log('link', links);
-                links.forEach((link) => {
-                    let matchUrl = link.match(regText)[2].replace(/\(|\)/g, '');
-                    let matchText = link.match(regText)[1];
-                    arrObj.push({
-                        href: matchUrl,
-                        text: matchText.substring(0, 50),
-                        path: mdPath,
+                if (links != null) {
+                    links.forEach((link) => {
+                        let matchUrl = link.match(regText)[2].replace(/\(|\)/g, '');
+                        let matchText = link.match(regText)[1];
+                        arrObj.push({
+                            href: matchUrl,
+                            text: matchText.substring(0, 50),
+                            path: mdPath,
+                        });
                     });
-                });
+                } else if(links === null){
+                    console.log(' No se encontraron links en el archivo ' + mdPath);
+                }
                 //   console.log('******objeto: ', [...arrObj]);
                 return [...arrObj];
             })

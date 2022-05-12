@@ -17,10 +17,6 @@ describe('fileOrDirectory', () => {
     it('debería ser una función', () => {
         expect(typeof fileOrDirectory).toBe('function');
     });
-
-    /* it('deberia ser un archivo', () => {
-        expect(fileOrDirectory('./README.md')).toBe(true);
-    }); */
 });
 
 describe('readDirectory', () => {
@@ -28,7 +24,7 @@ describe('readDirectory', () => {
         expect(typeof readDirectory).toBe('function');
     });
     it('deberia retornar un array con el contenido del directorio', () => {
-        expect(getMdFiles('./pruebas/').length).toBe(2);
+        expect(getMdFiles('./pruebas/').length).not.toBe(0);
     }); 
 });
 
@@ -69,6 +65,11 @@ describe('getMdFiles', () => {
 describe('getLinks', () => {
     it('debería ser una función', () => {
         expect(typeof getLinks).toBe('function');
+    });
+    it('deberia retornar un array de links', () => {
+        return getLinks('./pruebas/archivo.md').then(data => {
+            expect(data.length).toBe(5);
+        });
     });
 });
 
