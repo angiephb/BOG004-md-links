@@ -29,7 +29,7 @@ Para crear un archivo .js
 
 ### 3.1 Diagrama de Flujo 
 
-[ ](./img/API.png)
+![ ](./img/API.png)
 
 ### 3.2 Guía de Uso
 
@@ -85,7 +85,7 @@ _Retornará una promesa que resuelve un Array de objetos, donde cada objeto repr
 
 ### 4.1 Diagrama de Flujo
 
-[ ](./img/CLI.png)
+![ ](./img/CLI.png)
 
 ### 4.2 Guía de Uso
 
