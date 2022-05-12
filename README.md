@@ -22,6 +22,7 @@ Para instalar ingresa el siguiente comando en tu terminal de Git Bash:
 `npm install <https://github.com/angiephb/BOG004-md-links>`
 
 Para crear un archivo .js
+
 `const mdLinks = require('mdlinks')`
 
 ## 3. API
@@ -141,7 +142,5 @@ $  md-links ./pruebas/archivo.md --validate --stats
 
 
 ## 5. Creadora
-
-	:smiley_cat:
-  [ANGIE HERRERA](https://github.com/angiephb/BOG004-md-links)
-  :smiley_cat:
+:smiley_cat:
+[ANGIE HERRERA](https://github.com/angiephb/BOG004-md-links) :smiley_cat:
