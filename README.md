@@ -112,7 +112,7 @@ _Retornará un Array con la validación de cada link las siguientes propiedades:
 ```
 $  md-links ./pruebas/archivo.md --validate
 [
-  'pruebas\\archivo.md https://img.playbuzz.com/image/upload/ar_1.5,c_crop/v1556901078/isndqlxvo8n9fpogzlms.gif OK 200 hola archivo',
+  'C:\\Users\\Usuario\\Documents\\LABORATORIA\\PROYECTO MD\\BOG004-md-links\\pruebas\\archivo.md https://img.playbuzz.com/image/upload/ar_1.5,c_crop/v1556901078/isndqlxvo8n9fpogzlms.gif OK 200 hola archivo'
 ]
 ```
 
@@ -124,8 +124,8 @@ _Retornará un Array con las estadisticas de cada link las siguientes propiedade
 
 ```
 $  md-links ./pruebas/archivo.md --stats
- Total:  6
- Unique:  5
+ Total:  5
+ Unique:  4
 ```
 #### Ejemplo Opcion --validate --stats
 
@@ -135,8 +135,8 @@ _Retornará un Array con las estadisticas de cada link las siguientes propiedade
 
 ```
 $  md-links ./pruebas/archivo.md --validate --stats
- Total:  6 
- Unique:  5
+ Total:  5 
+ Unique:  4
  Broken:  3
 ```
 
